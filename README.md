@@ -20,10 +20,11 @@ Please sure your python interpreter is 3.7 or higher.
 
 ## Setup
 
-Make sure you have a databricks token exported in your environment.
+You will need to authenticate with databricks. Under the hood we use the databricks cli, for more information you can view how to authenticate the databricks cli [here](https://docs.databricks.com/dev-tools/cli/index.html#set-up-authentication). Make sure you have the following databricks tokens exported in your environment.
 
 ```sh
 export DATABRICKS_TOKEN="mydatabrickstoken"
+export DATABRICKS_HOST="URL_FOR_DATABRICKS"
 ```
 
 If your project is not a pip package already you have to turn it into one. You can use dbrocket to do that.
