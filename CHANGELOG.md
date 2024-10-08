@@ -1,6 +1,6 @@
 # Changelog db-rocket
 
-## Version 2.2.0
+## Version 3.0.0
 - Add `use_volumes` and `dst_path` arguments to support uploading to Unity Catalog Volumes.
 
 ## Version 2.1.0
