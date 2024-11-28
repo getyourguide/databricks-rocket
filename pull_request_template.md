@@ -1,9 +1,14 @@
 <!--
-For Work In Progress Pull Requests, please use the Draft PR feature, see https://github.blog/2019-02-14-introducing-draft-pull-requests/ for further details.
+🚨 IMPORTANT: Please format your **PR title** in the following format:
+    - `feat: JIRA_TICKET_ID DESCRIPTIVE_SUMMARY_OF_CHANGES` -> minor version bump (v1.2.3 -> v1.3.0)
+    - `fix: JIRA_TICKET_ID DESCRIPTIVE_SUMMARY_OF_CHANGES` -> patch version bump (v1.2.3 -> v1.2.4)
+    - `feat!: JIRA_TICKET_ID DESCRIPTIVE_SUMMARY_OF_CHANGES` -> major version bump (v1.2.3 -> v2.0.0)
 
-Please ensure your pull request title uses following pattern:
- - JIRA_TICKET_ID DESCRIPTIVE_SUMMARY_OF_CHANGES 
- - Example: RR-2582 Remove All Bugs From Service
+    - Example: `feat: RR-2582 Remove All Bugs From Service`
+
+This ensures that the release-please action can create a new version tag and changelog entries for you.
+
+---
 
 Please ensure you've done the following:  
   - 👷‍♀️ Create small PRs. In most cases, this will be possible. If your PR is large, try to split it in order to make it more readable.

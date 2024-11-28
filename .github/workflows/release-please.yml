@@ -1,0 +1,38 @@
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+name: release-please
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v4.0.2
+        id: release
+        with:
+          # this assumes that you have created a personal access token
+          # (PAT) and configured it as a GitHub action secret named
+          # `MY_RELEASE_PLEASE_TOKEN` (this secret name is not important).
+          #token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}  <-- Required to run GitHub Actions CI checks, lets try without.
+          # this is a built-in strategy in release-please, see "Action Inputs"
+          # for more options
+          release-type: python
+      - uses: actions/checkout@v3
+        if: ${{ steps.release.outputs.release_created }}  # Run only on release
+      - name: Build and publish to pypi
+        shell: bash
+        env:
+          PYPI_DB_ROCKET: ${{ secrets.PYPI_DB_ROCKET }}
+        run: |
+          pip install -r requirements.txt
+          python3 -m build --no-isolation
+          echo "Build successfull, uploading now..."
+          python3 -m twine upload dist/* -u "__token__" -p "$PYPI_DB_ROCKET" --skip-existing
+          echo "Upload successfull!"
+        if: ${{ steps.release.outputs.release_created }}  # Run only on release
