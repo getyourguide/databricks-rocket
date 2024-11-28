@@ -1,6 +1,6 @@
 fire~=0.4.0
 watchdog~=2.1.9
-databricks-cli~=0.17.0
+databricks-cli~=0.18.0
 argh
 build~=0.8.0
 pyyaml
